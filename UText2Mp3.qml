@@ -1,6 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
-import QtWebView 1.1
+import QtWebEngine 1.4
 
 Item{
     id: r
@@ -24,7 +24,7 @@ Item{
             //speakMp3(r.activationMessage)
         }
     }
-    WebView{
+    WebEngineView{
         id: wvtav
         width: parent.width
         height: parent.height
