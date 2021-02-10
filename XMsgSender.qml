@@ -25,7 +25,10 @@ Rectangle {
         Button{
             id: btnSend
             text: 'Enviar'
-            onClicked: r.send(txt.text)
+            onClicked: {
+                unik.speak(' dice '+txt.text)
+                r.send(txt.text)
+            }
         }
     }
 }
