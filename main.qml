@@ -80,9 +80,8 @@ ApplicationWindow {
             }
         }
         Button{
-            text: 'Conectar'
-            font.pixelSize: r.fs
-            anchors.right: parent.right
+            text: 'Conectar 2'
+            font.pixelSize: 30
             onClicked: {
                wsSqlClient.loguin()
             }
