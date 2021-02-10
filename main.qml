@@ -8,6 +8,11 @@ ApplicationWindow{
 	color: 'red'
     property string moduleName: 'msg-client'
 
+    Item{
+        id: xApp
+        anchors.fill: parent
+    }
+
     Component.onCompleted: {
         unik.speak('Se ha iniciado '+app.moduleName)
     }
