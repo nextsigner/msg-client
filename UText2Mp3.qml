@@ -1,5 +1,5 @@
-import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtWebView 1.1
 
 Item{
@@ -15,7 +15,7 @@ Item{
     property string activationMessage: 'Audio Activado.'
     property int indexLang: 0
     property var arrayLanguages: ["es-ES_EnriqueVoice", "es-ES_EnriqueV3Voice", "es-ES_LauraVoice", "es-ES_LauraV3Voice", "es-LA_SofiaVoice","es-LA_SofiaV3Voice","es-US_SofiaVoice","es-US_SofiaV3Voice" ]
-    BotonUX{
+    Button{
         id: btnAudioActivation
         text: 'Activar Audio'
         anchors.bottom: r.top
