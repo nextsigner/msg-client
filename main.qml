@@ -32,7 +32,7 @@ ApplicationWindow {
 
         property int fs
 
-        property string url: 'ws://127.0.0.1:5500'
+        property string url: 'ws://192.168.1.48:5500'
         property string user: ''
 
         property real visibility
