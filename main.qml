@@ -42,6 +42,7 @@ ApplicationWindow {
         id: xApp
         anchors.fill: parent
         Column{
+            width: parent.width
             XMsgList{
                 id: xMsgList
                 width: xApp.width
