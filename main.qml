@@ -6,4 +6,9 @@ ApplicationWindow{
 	visible: true
 	visibility: "Maximized"
 	color: 'red'
+    property string moduleName: 'msg-client'
+
+    Component.onCompleted: {
+        unik.speak('Se ha iniciado '+app.moduleName)
+    }
 }
