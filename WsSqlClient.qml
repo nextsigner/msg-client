@@ -1,5 +1,5 @@
-import QtQuick 2.9
-import QtQuick.Controls 2.0
+import QtQuick 2.12
+import QtQuick.Controls 2.12
 import QtQuick.Dialogs 1.2
 import Qt.WebSockets 1.0
 import "qwebchannel.js" as WebChannel
@@ -92,88 +92,6 @@ Rectangle {
         }
     }
 
-    Rectangle {
-        id: xUserName
-        width: rowUN.width+app.fs
-        height:r.fs*1.6
-        color:app.c3
-        visible:false
-        anchors.centerIn: parent
-        onVisibleChanged: {
-            if(visible){
-                tiUserName.focus=true
-            }
-        }
-        Column{
-            spacing: r.fs*0.5
-            Row{
-                id:rowUN
-                spacing: r.fs*0.5
-                Text{
-                    text: 'User Name: '
-                    font.pixelSize: r.fs
-                    color:app.c2
-                }
-                TextEdit{
-                    id:tiUserName
-                    width: r.width*0.5
-                    height: r.fs*1.2
-                    font.pixelSize: r.fs
-                    color:app.c2
-                    text: appSettings.user
-                    anchors.verticalCenter: parent.verticalCenter
-                    cursorDelegate: Rectangle{
-                        id:cte
-                        width: app.fs*0.25
-                        height: app.fs
-                        color:v?app.c2:'transparent'
-                        property bool v: true
-                        Timer{
-                            running: xUserName.visible
-                            repeat: true
-                            interval: 650
-                            onTriggered: cte.v=!cte.v
-                        }
-                    }
-                    Keys.onReturnPressed: {
-                        xUserName.loguin()
-                    }
-                    Rectangle{
-                        width: parent.width+r.fs*0.25
-                        height: parent.height+r.fs*0.25
-                        color: 'transparent'
-                        anchors.centerIn: parent
-                        border.width: 1
-                        border.color: app.c2
-                    }
-                }
-            }
-            Button{
-                text: 'Conectar'
-                font.pixelSize: r.fs
-                anchors.right: parent.right
-                onClicked: {
-                    xUserName.loguin()
-                }
-            }
-        }
-        function loguin(){
-            r.channel.objects.chatserver.login(tiUserName.text, function(arg) {
-                //check the return value for success
-                if (arg === true) {
-                    r.loginUserName=tiUserName.text
-                    xUserName.visible=false
-                    tiUserName.focus=false
-                    r.focus=false
-                    appSettings.user=tiUserName.text
-                    loguinSucess()
-                } else {
-                    tiUserName.color='red'
-                }
-            });
-        }
-
-    }
     Rectangle {
         id: xWsUrl
         width: r.width*0.8
@@ -292,7 +210,97 @@ Rectangle {
         }
 
     }
+    Rectangle {
+        id: xUserName
+        width: r.width
+        height:r.fs*1.6
+        color:app.c3
+        visible:false
+        anchors.centerIn: parent
+        onVisibleChanged: {
+            if(visible){
+                tiUserName.focus=true
+            }
+        }
+        Column{
+            spacing: r.fs*0.5
+            Row{
+                id:rowUN
+                spacing: r.fs*0.5
+                Text{
+                    text: 'User Name: '
+                    font.pixelSize: r.fs
+                    color:app.c2
+                }
+                TextEdit{
+                    id:tiUserName
+                    width: r.width*0.5
+                    height: r.fs*1.2
+                    font.pixelSize: r.fs
+                    color:app.c2
+                    text: appSettings.user
+                    anchors.verticalCenter: parent.verticalCenter
+                    cursorDelegate: Rectangle{
+                        id:cte
+                        width: app.fs*0.25
+                        height: app.fs
+                        color:v?app.c2:'transparent'
+                        property bool v: true
+                        Timer{
+                            running: xUserName.visible
+                            repeat: true
+                            interval: 650
+                            onTriggered: cte.v=!cte.v
+                        }
+                    }
+                    Keys.onReturnPressed: {
+                        xUserName.loguin()
+                    }
+                    Rectangle{
+                        width: parent.width+r.fs*0.25
+                        height: parent.height+r.fs*0.25
+                        color: 'transparent'
+                        anchors.centerIn: parent
+                        border.width: 1
+                        border.color: app.c2
+                    }
+                }
+            }
+            Rectangle{
+                width: app.fs*2
+                height: width
+                color: 'blue'
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked:xUserName.loguin()
+                }
+            }
+            Button{
+                text: 'Conectar'
+                font.pixelSize: r.fs
+                anchors.right: parent.right
+                onClicked: {
+                    xUserName.loguin()
+                }
+            }
+        }
+        function loguin(){
+            r.channel.objects.chatserver.login(tiUserName.text, function(arg) {
+                //check the return value for success
+                if (arg === true) {
+                    r.loginUserName=tiUserName.text
+                    xUserName.visible=false
+                    tiUserName.focus=false
+                    r.focus=false
+                    appSettings.user=tiUserName.text
+                    loguinSucess()
+                } else {
+                    tiUserName.color='red'
+                }
+            });
+        }
 
+    }
     Component.onCompleted:{
         unik.sqliteInit(sqliteFileName)
         var sql=''

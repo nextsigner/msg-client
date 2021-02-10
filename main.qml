@@ -6,8 +6,8 @@ import Qt.labs.settings 1.0
 ApplicationWindow {
     id: app
     visible: true
-    width: Screen.width/2
-    height: Screen.desktopAvailableHeight-altoBarra
+    width: Qt.platform.os!=='android'?Screen.width/2:Screen.width
+    height: Qt.platform.os!=='android'?Screen.desktopAvailableHeight-altoBarra:Screen.desktopAvailableHeight
     x:Screen.width/2
     title: qsTr("Msg-Client by nextsigner")
     visibility: 'Windowed'
