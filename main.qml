@@ -1,6 +1,6 @@
-import QtQuick 2.9
-import QtQuick.Controls 2.0
-import QtQuick.Controls.Styles 1.2
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+//import QtQuick.Controls.Styles 1.2
 import QtQuick.Window 2.0
 import Qt.labs.settings 1.0
 ApplicationWindow {
@@ -8,7 +8,7 @@ ApplicationWindow {
     visible: true
     width: Qt.platform.os!=='android'?Screen.width/2:Screen.width
     height: Qt.platform.os!=='android'?Screen.desktopAvailableHeight-altoBarra:Screen.desktopAvailableHeight
-    x:Screen.width/2
+    x:Qt.platform.os!=='android'?Screen.width/2:0
     title: qsTr("Msg-Client by nextsigner")
     visibility: 'Windowed'
     color: 'black'
