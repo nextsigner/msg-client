@@ -11,7 +11,7 @@ Rectangle {
     property int fs: app && app.fs ? app.fs:r.width*0.03
     property var channel
     property var listView
-    property url url: appSettings.url
+    property url url: 'ws://192.168.1.48:5500'//appSettings.url
     property var arrayUserList: []
     property string sqliteFileName: 'wssqlclient.sqlite'
     property string loginUserName
