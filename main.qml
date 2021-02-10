@@ -5,7 +5,7 @@ ApplicationWindow{
 	id: app
 	visible: true
 	visibility: "Maximized"
-	color: 'red'
+    color: 'blue'
     property string moduleName: 'msg-client'
 
     Item{
