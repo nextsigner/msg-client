@@ -80,6 +80,7 @@ ApplicationWindow {
                 }
             }
         }
+        UText2Mp3{id: uText2Mp3}
     }
     UnikBusy{id:ub;running: false}
     Shortcut {
