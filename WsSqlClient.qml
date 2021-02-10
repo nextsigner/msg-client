@@ -216,7 +216,7 @@ Rectangle {
         height:r.fs*1.6
         color:app.c3
         visible:false
-        anchors.centerIn: parent
+        anchors.centerIn: r
         onVisibleChanged: {
             if(visible){
                 tiUserName.focus=true
@@ -323,5 +323,8 @@ Rectangle {
     function sendCode(c){
         console.log("WsSql sending "+r.loginUserName+" "+c)
         r.channel.objects.chatserver.sendMessage(r.loginUserName,c);
+    }
+    function loguin(){
+         xUserName.loguin()
     }
 }

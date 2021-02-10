@@ -53,34 +53,41 @@ ApplicationWindow {
                 onSend: wsSqlClient.sendCode(msg)
             }
         }
-    }
-
-    WsSqlClient{
-        id:wsSqlClient
-        sqliteFileName: app.moduleName+'.sqlite'
-        onSucess: xMsgList.updateList()
-        onLoguinSucess: {
-            focus=false
-            visible=false
-            //unikTextEditor.visible=true
-            //unikTextEditor.textEditor.focus=true
-            //unikTextEditor.textEditor.setPos()
-        }        
-        onErrorSucess: {
-            console.log('WebSockets Error success...')
-            focus=true
-            visible=true
-            //unikTextEditor.visible=false
-            //unikTextEditor.textEditor.focus=false
-        }
-        onVisibleChanged: {
-            if(!visible){
+        WsSqlClient{
+            id:wsSqlClient
+            sqliteFileName: app.moduleName+'.sqlite'
+            onSucess: xMsgList.updateList()
+            onLoguinSucess: {
                 focus=false
-                }else{
+                visible=false
                 //unikTextEditor.visible=true
+                //unikTextEditor.textEditor.focus=true
+                //unikTextEditor.textEditor.setPos()
+            }
+            onErrorSucess: {
+                console.log('WebSockets Error success...')
+                focus=true
+                visible=true
+                //unikTextEditor.visible=false
+                //unikTextEditor.textEditor.focus=false
+            }
+            onVisibleChanged: {
+                if(!visible){
+                    focus=false
+                }else{
+                    //unikTextEditor.visible=true
+                }
             }
         }
-    }
+        Button{
+            text: 'Conectar'
+            font.pixelSize: r.fs
+            anchors.right: parent.right
+            onClicked: {
+               wsSqlClient.loguin()
+            }
+        }
+        }
     UnikBusy{id:ub;running: false}
     Shortcut {
         sequence: "Shift+Left"
@@ -91,17 +98,17 @@ ApplicationWindow {
     Shortcut {
         sequence: "Shift+Return"
         onActivated: {
-           if(app.visibility!==Window.Maximized){
+            if(app.visibility!==Window.Maximized){
                 app.visibility='Maximized'
-           }else{
-            app.visibility='Windowed'
-           }
+            }else{
+                app.visibility='Windowed'
+            }
         }
     }
     Shortcut {
         sequence: "Ctrl+Shift+q"
         onActivated: {
-           Qt.quit()
+            Qt.quit()
         }
     }
     onVisibilityChanged: {
