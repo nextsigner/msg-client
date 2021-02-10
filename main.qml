@@ -79,14 +79,7 @@ ApplicationWindow {
                 }
             }
         }
-        Button{
-            text: 'Conectar 2'
-            font.pixelSize: 30
-            onClicked: {
-               wsSqlClient.loguin()
-            }
-        }
-        }
+    }
     UnikBusy{id:ub;running: false}
     Shortcut {
         sequence: "Shift+Left"

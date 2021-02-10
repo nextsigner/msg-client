@@ -58,6 +58,7 @@ Item {
                 let d = new Date(parseInt(t))
                 txtTime.text=''+d.toString()
                 txtMsg.text='<b>'+f+'</b>: '+m
+                unik.speak(f+' dice '+m)
             }
         }
     }
