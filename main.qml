@@ -3,6 +3,8 @@ import QtQuick.Controls 2.12
 //import QtQuick.Controls.Styles 1.2
 import QtQuick.Window 2.0
 import Qt.labs.settings 1.0
+import QtMultimedia 5.12
+
 ApplicationWindow {
     id: app
     visible: true
@@ -22,6 +24,10 @@ ApplicationWindow {
     property color c3: "black"
     property color c4: "white"
 
+    MediaPlayer{
+        id: mp
+    }
+
     Settings{
         id: appSettings
         fileName: app.moduleName+'.cfg'
@@ -34,6 +40,7 @@ ApplicationWindow {
 
         property string url: 'ws://192.168.1.48:5500'
         property string user: ''
+        property int uId: 0
 
         property real visibility
     }
@@ -80,7 +87,6 @@ ApplicationWindow {
                 }
             }
         }
-        UText2Mp3{id: uText2Mp3}
     }
     UnikBusy{id:ub;running: false}
     Shortcut {

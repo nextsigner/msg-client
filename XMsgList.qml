@@ -58,16 +58,18 @@ Item {
                 let d = new Date(parseInt(t))
                 txtTime.text=''+d.toString()
                 txtMsg.text='<b>'+f+'</b>: '+m
-                uText2Mp3.speak(f+' dice '+m)
+                mp.source='./beep.wav'
+                mp.volume=1.0
+                mp.play()
             }
         }
     }
-    property int uId: 0
+    //property int uId: 0 ahora en appSettings.uId
     function updateList(){
-        let sql='SELECT * FROM  msgs where id > '+r.uId
+        let sql='SELECT * FROM  msgs where id > '+appSettings.uId
         let rows=unik.getSqlData(sql)
         for(var i=0;i<rows.length;i++){
-            r.uId=parseInt(rows[i].col[0])
+            appSettings.uId=parseInt(rows[i].col[0])
             let from=rows[i].col[1]
             let msg=rows[i].col[2]
             let ms=rows[i].col[3]
