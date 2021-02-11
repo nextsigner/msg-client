@@ -85,7 +85,13 @@ ApplicationWindow {
                 }else{
                     //unikTextEditor.visible=true
                 }
-            }
+            }            
+        }
+        Text {
+            id: info
+            text: 'Url: '+wsSqlClient.url
+            font.pixelSize: 20
+            color: 'red'
         }
     }
     UnikBusy{id:ub;running: false}
@@ -115,7 +121,7 @@ ApplicationWindow {
         appSettings.visibility=app.visibility
     }
     Component.onCompleted: {
-        var ukldata='-folder='+appsDir+'/'+app.moduleName+' -cfg'
+        var ukldata='-git=https://github.com/nextsigner/'+appsDir+'/'+app.moduleName+'.git'
         var ukl=appsDir+'/link_'+app.moduleName+'.ukl'
         unik.setFile(ukl, ukldata)
         if(appSettings.lvh<=0){
