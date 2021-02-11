@@ -58,7 +58,12 @@ Item {
                 let d = new Date(parseInt(t))
                 txtTime.text=''+d.toString()
                 txtMsg.text='<b>'+f+'</b>: '+m
-                mp.source='./beep.wav'
+                let beepUrl=pws+'/msg-client/beep.wav'
+                let be=unik.fileExist(beepUrl)
+                info.text='->'+be+' url->'+beepUrl
+                info.color='blue'
+                info.font.pixelSize=28
+                mp.source=beepUrl
                 mp.volume=1.0
                 mp.play()
             }
